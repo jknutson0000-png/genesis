@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis Executive Home Services</title>
+    <meta name="description" content="Premium home services for Metro Atlanta. Consultation, assessment, and meticulous execution by Genesis Executive Home Services.">
+    <meta property="og:title" content="Genesis Executive Home Services">
+    <meta property="og:description" content="Premium home services done right across Metro Atlanta.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1F2A33;
+            --charcoal: #2B2D2F;
+            --ivory: #F5F5F0;
+            --gold: #C5A572;
+            --slate: #6E7B87;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--navy);
+            color: var(--ivory);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a { color: inherit; }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background-color: var(--navy);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 1.5s forwards;
+        }
+
+        .preloader-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            animation: pulse-in 1.5s ease;
+        }
+
+        @keyframes pulse-in {
+            0% { opacity: 0; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.02); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: headerIn 0.6s ease 1.8s forwards;
+            background: linear-gradient(180deg, rgba(31,42,51,0.9), rgba(31,42,51,0));
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes headerIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            height: 48px;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background-color: var(--gold);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--ivory);
+            color: var(--navy);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            align-items: center;
+            gap: 3rem;
+            text-align: left;
+            padding: 6rem 2rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-copy h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: 0.02em;
+            max-width: 16ch;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.9s forwards;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--slate);
+            opacity: 0;
+            animation: fadeUp 0.8s ease 2.1s forwards;
+        }
+
+        .hero-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+            color: var(--slate);
+        }
+
+        .hero-card {
+            background: linear-gradient(135deg, rgba(197,165,114,0.08), rgba(197,165,114,0.02));
+            border: 1px solid rgba(197,165,114,0.2);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-card strong { color: var(--ivory); }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .ghost-btn {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.75rem 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ghost-btn:hover {
+            background: rgba(197,165,114,0.12);
+            transform: translateY(-1px);
+        }
+
+        .hero-visual {
+            position: relative;
+            isolation: isolate;
+            min-height: 300px;
+        }
+
+        .orbit {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px dashed rgba(197,165,114,0.25);
+            animation: spin 18s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-badge {
+            position: absolute;
+            inset: 30% auto auto 20%;
+            background: rgba(43, 45, 47, 0.9);
+            padding: 1.25rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(197,165,114,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .hero-badge h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            color: var(--gold);
+        }
+
+        .hero-badge small {
+            color: var(--slate);
+        }
+
+        /* Process */
+        .process {
+            padding: 6rem 2rem 8rem;
+            background-color: var(--charcoal);
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .section-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p { color: var(--slate); }
+
+        .process-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--slate);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* Services */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--navy);
+        }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: rgba(43,45,47,0.8);
+            border: 1px solid rgba(197,165,114,0.15);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: grid;
+            gap: 0.5rem;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(197,165,114,0.35);
+        }
+
+        .service-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            letter-spacing: 0.04em;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(110, 123, 135, 0.15);
+            color: var(--slate);
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* CTA */
+        .cta-band {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(197,165,114,0.12), rgba(31,42,51,0.85));
+            text-align: center;
+        }
+
+        .cta-band h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-band p { color: var(--slate); margin-bottom: 1.25rem; }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem 6rem;
+            text-align: center;
+            background: var(--navy);
+        }
+
+        .footer-contact { margin-bottom: 1rem; }
+
+        .footer-contact a {
+            color: var(--ivory);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover { color: var(--gold); }
+
+        .footer-address {
+            font-size: 0.85rem;
+            color: var(--slate);
+            line-height: 1.8;
+        }
+
+        /* Fixed Badge */
+        .badge {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ivory);
+            background-color: rgba(43, 45, 47, 0.9);
+            padding: 0.6rem 1.2rem;
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 2.3s forwards;
+        }
+
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            header { padding: 1rem 1.5rem; }
+            .logo { height: 36px; }
+            .cta-btn { font-size: 0.75rem; padding: 0.6rem 1rem; }
+            .hero { padding-top: 7rem; }
+            .hero-badge { position: relative; inset: auto; margin-top: 1rem; }
+            .hero-visual { min-height: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1.5rem; }
+            .badge { font-size: 0.65rem; padding: 0.5rem 1rem; }
+        }
+
+        @media (max-width: 540px) {
+            .process-grid { grid-template-columns: 1fr; }
+            .hero { text-align: center; }
+            .hero-cta { justify-content: center; }
+            .hero-badge { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader" role="status" aria-live="polite" aria-label="Page loading">
+        <div class="preloader-text">Genesis</div>
+    </div>
+
+    <header>
+        <img src="https://genesisehs.com/nc_assets/img/logos/genesis_header_240h_ivory.png" alt="Genesis" class="logo" loading="lazy">
+        <a href="tel:3317038489" class="cta-btn">Call / Text</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="tagline">Metro Atlanta</p>
+                <h1>Premium home services done right.</h1>
+                <div class="hero-details">
+                    <div class="hero-card"><strong>One partner, multiple trades.</strong> Projects coordinated end-to-end with vetted craftsmen.</div>
+                    <div class="hero-card"><strong>Transparent timelines.</strong> Clear scheduling and communication so you know what happens next.</div>
+                    <div class="hero-card"><strong>White-glove standards.</strong> Protection, cleanup, and final walkthrough on every job.</div>
+                </div>
+                <div class="hero-cta">
+                    <a href="tel:3317038489" class="cta-btn">Call Now</a>
+                    <a class="ghost-btn" href="#services">View Services</a>
+                </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="orbit"></div>
+                <div class="hero-badge">
+                    <h2>Currently accepting new customers</h2>
+                    <small>Serving Cobb, Fulton, and surrounding Metro Atlanta communities.</small>
+                    <div class="pill">Licensed &amp; insured</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" id="process">
+            <div class="section-header">
+                <h3>How we work</h3>
+                <p>From first call to final walkthrough, Genesis keeps you informed and the project on track.</p>
+            </div>
+            <div class="process-grid">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-label">Consultation</div>
+                    <div class="step-desc">We capture your vision, constraints, and schedule priorities.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-label">Assessment</div>
+                    <div class="step-desc">Site visit, scope confirmation, and transparent proposals.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-label">Execution</div>
+                    <div class="step-desc">Meticulous work, clean job sites, and proactive updates.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-label">Completion</div>
+                    <div class="step-desc">Every detail verified; we walk the space together before closeout.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="section-header">
+                <h3>Signature services</h3>
+                <p>Projects tailored to your home with premium materials, finish quality, and communication.</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <h4>Interior Painting</h4>
+                    <p>Detailed prep, smooth coverage, and crisp lines with low-VOC products.</p>
+                    <span class="pill">Clean finish</span>
+                </article>
+                <article class="service-card">
+                    <h4>Flooring</h4>
+                    <p>Hardwood, luxury vinyl, and tile installation with careful subfloor preparation.</p>
+                    <span class="pill">Durability</span>
+                </article>
+                <article class="service-card">
+                    <h4>Lighting &amp; Electrical</h4>
+                    <p>Fixture upgrades, smart switches, and panel checks from licensed pros.</p>
+                    <span class="pill">Licensed</span>
+                </article>
+                <article class="service-card">
+                    <h4>Exterior Refresh</h4>
+                    <p>Pressure washing, exterior paint, and repair punch lists to boost curb appeal.</p>
+                    <span class="pill">Curb appeal</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-band" aria-label="Book consultation">
+            <h3>Ready for a dependable partner?</h3>
+            <p>Call or text to schedule a visit. We coordinate around your schedule and protect your home like our own.</p>
+            <div class="cta-actions">
+                <a href="tel:3317038489" class="cta-btn">Call 331-703-8489</a>
+                <a class="ghost-btn" href="#process">See the process</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-contact">
+            <a href="tel:3317038489">331-703-8489</a>
+        </div>
+        <div class="footer-address">
+            2487 Cedarcrest Rd. Suite 812<br>
+            Acworth, GA 30101
+        </div>
+    </footer>
+
+    <div class="badge" aria-live="polite">Currently accepting new customers</div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            if (!preloader) return;
+            preloader.addEventListener('animationend', () => preloader.remove());
+        });
+    </script>
+</body>
+</html>
