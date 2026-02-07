@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+    <h2>Suppression List</h2>
+    <form class="grid" action="/suppression" method="post">
+        <label>
+            Email
+            <input type="email" name="email" required />
+        </label>
+        <label>
+            Reason
+            <input type="text" name="reason" />
+        </label>
+        <button type="submit">Add to Suppression List</button>
+    </form>
+</section>
+
+<section class="card">
+    <h3>Suppressed Contacts</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Reason</th>
+                    <th>Added</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in suppressed %}
+                <tr>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.reason or "—" }}</td>
+                    <td>{{ item.created_at }}</td>
+                    <td>
+                        <form action="/suppression/remove" method="post">
+                            <input type="hidden" name="suppression_id" value="{{ item.id }}" />
+                            <button class="link" type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4" class="muted">No suppressed emails yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

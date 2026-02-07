@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or "Genesis Outreach" }}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div>
+            <h1>Genesis Outreach Console</h1>
+            <p>Bulk email campaigns with compliance controls.</p>
+        </div>
+        <nav>
+            <a href="/">Contacts</a>
+            <a href="/suppression">Suppression List</a>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">Genesis Executive Home Services · Internal Tool</footer>
+    <script src="/static/app.js"></script>
+</body>
+</html>

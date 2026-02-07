@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+    <div class="title-row">
+        <div>
+            <h2>{{ campaign.name }}</h2>
+            <p class="muted">{{ campaign.notes }}</p>
+        </div>
+        <a class="button secondary" href="/campaigns/{{ campaign.id }}/export">Export CSV</a>
+    </div>
+    <form class="grid" method="post" action="/campaigns/{{ campaign.id }}/send">
+        <label>
+            Template
+            <select name="template_id" id="template_id" required>
+                {% for template in templates %}
+                <option value="{{ template.id }}">{{ template.name }} (v{{ template.version }})</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            From name
+            <input type="text" name="from_name" value="{{ default_from }}" />
+        </label>
+        <label>
+            Reply-to email
+            <input type="email" name="reply_to" value="{{ default_reply_to }}" />
+        </label>
+        <label>
+            Signature block
+            <input type="text" name="signature" value="{{ default_signature }}" />
+        </label>
+        <label>
+            Max emails / minute
+            <input type="number" name="max_per_minute" value="10" min="1" />
+        </label>
+        <label>
+            Daily cap
+            <input type="number" name="daily_cap" value="150" min="1" />
+        </label>
+        <label class="checkbox">
+            <input type="checkbox" name="allow_role_inboxes" /> Allow role inboxes (info@, admin@)
+        </label>
+        <label class="checkbox">
+            <input type="checkbox" name="test_mode" id="test_mode" /> Test mode (send only to test email)
+        </label>
+        <label>
+            Test email
+            <input type="email" name="test_email" placeholder="me@example.com" />
+        </label>
+        <button type="submit">Send Campaign</button>
+    </form>
+    <p class="helper">Unsubscribe line added automatically: “{{ unsubscribe_line }}”</p>
+</section>
+
+<section class="card">
+    <h3>Live Preview</h3>
+    <div class="grid">
+        <label>
+            Preview contact
+            <select id="preview_contact">
+                {% for contact in contacts %}
+                <option value="{{ contact.id }}">{{ contact.contact_name }} — {{ contact.company_name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+    <div class="preview">
+        <h4 id="preview_subject">Subject</h4>
+        <pre id="preview_body"></pre>
+    </div>
+</section>
+
+<section class="card">
+    <h3>Campaign Contacts</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.company_name }}</td>
+                    <td>{{ contact.contact_name }}</td>
+                    <td>{{ contact.email or "—" }}</td>
+                    <td><span class="status {{ contact.campaign_status|lower|replace(' ', '-') }}">{{ contact.campaign_status }}</span></td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4" class="muted">No contacts in this campaign.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="card">
+    <h3>Recent Activity</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.contact_id }}</td>
+                    <td>{{ log.status }}</td>
+                    <td>{{ log.error_message or "—" }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4" class="muted">No activity yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
