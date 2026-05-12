@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#1F2A33">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192.svg">
     <style>
         :root {
             --navy: #1F2A33;
@@ -565,6 +568,12 @@
 
     <script>
         window.addEventListener('load', () => {
+
+        if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+            navigator.serviceWorker.register('/service-worker.js').catch((error) => {
+                console.error('Service worker registration failed:', error);
+            });
+        }
             const preloader = document.querySelector('.preloader');
             if (!preloader) return;
             preloader.addEventListener('animationend', () => preloader.remove());
