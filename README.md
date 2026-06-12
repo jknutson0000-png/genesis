@@ -1,9 +1,9 @@
-# Genesis Home Services
+# Genesis Executive Home Services
 
-Website for Genesis Home Services — a trusted local handyman serving Acworth and Metro Atlanta, GA.
+Website for Genesis Executive Home Services — premium home services in Metro Atlanta, Georgia.
 
-- Single-file, fast static site (`index.html`) — inline CSS, minimal JS, Google Fonts.
-- Clean light theme, mobile-first, sticky click-to-call, free-quote form.
-- Local SEO with `HomeAndConstructionBusiness` JSON-LD structured data.
+- Navy / gold / ivory brand (matches business cards), Cormorant Garamond + DM Sans.
+- Three pages — `index.html`, `services.html`, `contact.html` — sharing `styles.css`.
+- Static site, no build step. Mobile click-to-call, service request form, LocalBusiness JSON-LD.
 
 **Contact:** 331-703-8489 · 2487 Cedarcrest Rd. Suite 812, Acworth, GA 30101
