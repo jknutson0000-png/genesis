@@ -51,7 +51,9 @@ Reasoning by elimination:
 - **Electrochemical etching** (stencil + electrolyte + low-voltage current) marks stainless beautifully but needs a pre-made stencil per design, works poorly on anodized aluminum, and is wet/messy. Wrong tool for on-demand logos at a booth. Ruled out.
 - **Rotary/diamond-drag engravers** (the mall-kiosk machines) produce thin scratched lines, not the solid dark filled logos you described. Ruled out.
 
-**Conclusion:** compact galvo fiber (or fiber/IR hybrid) laser, ~$1,200–$2,500 street price. This is a real, attainable machine for a small business — not industrial equipment.
+**Confirming detail: the vendor was also engraving wood.** A pure fiber laser (e.g. ComMarker B4) does wood poorly — 1064 nm scorches it rather than engraving cleanly. Doing metal wallets *and* wood at the same booth is the signature of a **dual-source hybrid**: a fiber/IR laser for metal plus a blue diode laser for wood/leather/acrylic in one machine. That's exactly the xTool F1 / F1 Ultra / LaserPecker 4 design, and it's why those machines dominate fair booths — one portable unit covers the whole personalization menu.
+
+**Conclusion:** compact galvo **fiber + diode hybrid** laser (xTool F1-class), ~$1,200–$2,500 street price. This is a real, attainable machine for a small business — not industrial equipment. For Genesis it also tilts the Phase 2 pick toward the F1/F1 Ultra over a pure-fiber unit if wood/leather capability (hat patches, wood gifts) matters to you.
 
 ---
 
