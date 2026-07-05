@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Murphy — Painting &amp; Home Services</title>
+    <meta name="description" content="Interior & exterior painting, popcorn ceiling removal, window and gutter cleaning. Local, reliable, and neighbor-recommended. Serving Cherokee County & North Metro Atlanta.">
+    <meta property="og:title" content="Daniel Murphy — Painting & Home Services">
+    <meta property="og:description" content="Painting, popcorn ceiling removal, window & gutter cleaning. Local and neighbor-recommended.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #16303C;
+            --navy-deep: #0F232D;
+            --cream: #FAF7F2;
+            --white: #FFFFFF;
+            --amber: #E8862E;
+            --amber-dark: #CF6F1A;
+            --tape-blue: #2D7DD2;
+            --ink: #22333B;
+            --muted: #62727B;
+            --line: #E5DFD5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.65;
+        }
+
+        h1, h2, h3, .btn { font-family: 'Archivo', sans-serif; }
+
+        a { color: inherit; text-decoration: none; }
+
+        img { max-width: 100%; display: block; }
+
+        .wrap {
+            width: min(1060px, 92%);
+            margin: 0 auto;
+        }
+
+        /* ============ Header ============ */
+        header {
+            background: var(--navy);
+            color: var(--cream);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .brand {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .brand .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--amber);
+            flex: none;
+        }
+
+        .top-phone {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--cream);
+            opacity: 0.95;
+            white-space: nowrap;
+        }
+
+        /* ============ Hero ============ */
+        .hero {
+            background:
+                radial-gradient(900px 420px at 85% -10%, rgba(45,125,210,0.28), transparent 60%),
+                radial-gradient(700px 380px at -10% 110%, rgba(232,134,46,0.22), transparent 60%),
+                var(--navy);
+            color: var(--cream);
+            padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(3.5rem, 9vw, 6rem);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.015em;
+            max-width: 20ch;
+            margin-inline: auto;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--amber);
+        }
+
+        .hero p.lead {
+            margin: 1.1rem auto 0;
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            max-width: 52ch;
+            color: rgba(250,247,242,0.85);
+        }
+
+        .hero-ctas {
+            margin-top: 1.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-primary {
+            background: var(--amber);
+            color: var(--navy-deep);
+            box-shadow: 0 6px 18px rgba(232,134,46,0.35);
+        }
+
+        .btn-primary:hover { background: var(--amber-dark); transform: translateY(-1px); }
+
+        .btn-ghost {
+            border: 1.5px solid rgba(250,247,242,0.45);
+            color: var(--cream);
+        }
+
+        .btn-ghost:hover { border-color: var(--cream); transform: translateY(-1px); }
+
+        .hero-badges {
+            margin-top: 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem 1.4rem;
+            font-size: 0.88rem;
+            color: rgba(250,247,242,0.75);
+        }
+
+        .hero-badges span::before {
+            content: "✓";
+            color: var(--amber);
+            font-weight: 700;
+            margin-right: 0.45rem;
+        }
+
+        /* ============ Special banner ============ */
+        .special {
+            background: var(--amber);
+            color: var(--navy-deep);
+        }
+
+        .special .wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.35rem;
+            padding: 0.95rem 0;
+        }
+
+        .special strong { font-family: 'Archivo', sans-serif; font-weight: 800; }
+
+        .special .fine { font-size: 0.85rem; opacity: 0.85; }
+
+        /* ============ Sections ============ */
+        section { padding: clamp(3rem, 7vw, 4.5rem) 0; text-align: center; }
+
+        .kicker {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--tape-blue);
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-top: 0.4rem;
+            color: var(--navy);
+        }
+
+        .section-intro {
+            max-width: 58ch;
+            margin: 0.8rem auto 0;
+            color: var(--muted);
+        }
+
+        /* Services */
+        .services-grid {
+            margin-top: 2.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.1rem;
+        }
+
+        .service {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 2px 10px rgba(22,48,60,0.05);
+        }
+
+        .service .icon {
+            width: 46px; height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            background: rgba(45,125,210,0.12);
+            margin: 0 auto 1rem;
+        }
+
+        .service h3 {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .service p {
+            margin-top: 0.45rem;
+            font-size: 0.93rem;
+            color: var(--muted);
+        }
+
+        /* Gallery */
+        .gallery { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+        .gallery-grid {
+            margin-top: 2.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+        }
+
+        /*
+          PHOTOS: to add real photos of past work, replace a .ph div below with:
+              <figure class="shot">
+                  <img src="assets/dm-work-1.jpg" alt="Freshly painted living room" loading="lazy">
+                  <figcaption>Interior repaint — Ridgemill</figcaption>
+              </figure>
+        */
+        .shot, .ph {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: var(--cream);
+            border: 1px solid var(--line);
+        }
+
+        .shot { position: relative; }
+
+        .shot img { width: 100%; height: 100%; object-fit: cover; }
+
+        .shot figcaption {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+            color: var(--cream);
+            background: linear-gradient(transparent, rgba(15,35,45,0.85));
+        }
+
+        .ph {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            color: var(--muted);
+            border-style: dashed;
+            border-color: #D5CDBF;
+            font-size: 0.85rem;
+        }
+
+        .ph .big { font-size: 1.6rem; opacity: 0.75; }
+
+        /* Why / trust */
+        .why-grid {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.6rem 2rem;
+        }
+
+        .why h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+        }
+
+        .why h3::before {
+            content: "";
+            width: 8px; height: 8px;
+            border-radius: 2px;
+            background: var(--amber);
+            flex: none;
+        }
+
+        .why p { margin-top: 0.4rem; font-size: 0.92rem; color: var(--muted); }
+
+        /* Contact */
+        .contact {
+            background: var(--navy);
+            color: var(--cream);
+        }
+
+        .contact .kicker { color: var(--amber); }
+
+        .contact h2 { color: var(--cream); }
+
+        .contact-card {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            align-items: center;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: clamp(1.4rem, 4vw, 2.2rem);
+        }
+
+        .phone-big {
+            font-family: 'Archivo', sans-serif;
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: 0.01em;
+        }
+
+        .contact-note { margin: 0.4rem auto 0; font-size: 0.9rem; color: rgba(250,247,242,0.7); max-width: 40ch; }
+
+        /* Footer */
+        footer {
+            background: var(--navy-deep);
+            color: rgba(250,247,242,0.65);
+            padding: 1.6rem 0;
+            font-size: 0.85rem;
+        }
+
+        footer .wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .genesis-ad {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .genesis-ad img { width: 30px; height: 30px; object-fit: contain; }
+
+        .ga-text { display: flex; flex-direction: column; line-height: 1.25; }
+
+        .ga-powered { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.7; }
+
+        .ga-name { font-weight: 700; color: var(--cream); font-size: 0.9rem; }
+
+        .ga-tag { font-size: 0.72rem; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="wrap topbar">
+            <div class="brand"><span class="dot"></span>Daniel Murphy · Home Services</div>
+            <!-- TODO: replace 25__ with the full phone number, here and in the two links below -->
+            <a class="top-phone" href="tel:+140491425__">(404) 914-25__</a>
+        </div>
+        <div class="hero">
+            <div class="wrap">
+                <h1>Painting &amp; home services, <em>done right</em> by a neighbor you know.</h1>
+                <p class="lead">Interior and exterior painting, popcorn ceiling removal, and window &amp; gutter cleaning — serving Cherokee County and North Metro Atlanta. No call centers, no crews of strangers. You call, Daniel shows up.</p>
+                <div class="hero-ctas">
+                    <a class="btn btn-primary" href="tel:+140491425__">📞 Call or text for a free quote</a>
+                    <a class="btn btn-ghost" href="#work">See past work</a>
+                </div>
+                <div class="hero-badges">
+                    <span>Free estimates</span>
+                    <span>Locally based</span>
+                    <span>Neighbor-recommended</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="special">
+        <div class="wrap">
+            <div><strong>$120 Special</strong> — window <em>and</em> gutter cleaning for single-story homes. Windows scrubbed &amp; squeegeed, gutters rinsed &amp; unclogged.</div>
+            <div class="fine">Limited time — mention this site when you call.</div>
+        </div>
+    </div>
+
+    <section id="services">
+        <div class="wrap">
+            <div class="kicker">What I do</div>
+            <h2>Services</h2>
+            <p class="section-intro">Straightforward home services with careful prep, clean work, and a walkthrough when the job is done.</p>
+            <div class="services-grid">
+                <div class="service">
+                    <div class="icon">🎨</div>
+                    <h3>Interior &amp; Exterior Painting</h3>
+                    <p>Walls, ceilings, trim, and exteriors. Careful masking and prep, quality paint, crisp lines, and a clean job site when I leave.</p>
+                </div>
+                <div class="service">
+                    <div class="icon">🏠</div>
+                    <h3>Popcorn Ceiling Removal</h3>
+                    <p>Say goodbye to dated, dusty popcorn ceilings. Full plastic containment, smooth refinish, and paint-ready results.</p>
+                </div>
+                <div class="service">
+                    <div class="icon">🪟</div>
+                    <h3>Window Cleaning</h3>
+                    <p>Scrubbed and squeegeed — not just hosed off. Streak-free glass inside and out that makes the whole house feel brighter.</p>
+                </div>
+                <div class="service">
+                    <div class="icon">🍂</div>
+                    <h3>Gutter Cleaning</h3>
+                    <p>Rinsed and unclogged so water goes where it should. Protect your roofline, siding, and foundation before the next storm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="work">
+        <div class="wrap">
+            <div class="kicker">Proof, not promises</div>
+            <h2>Past Work</h2>
+            <p class="section-intro">A few recent jobs around the neighborhood. Photos coming soon — check back, or ask for references when you call.</p>
+            <div class="gallery-grid">
+                <!-- Swap these placeholders for real photos — see the note in the CSS above -->
+                <div class="ph"><span class="big">🖼️</span><span>Popcorn ceiling — before &amp; after</span></div>
+                <div class="ph"><span class="big">🖼️</span><span>Interior repaint</span></div>
+                <div class="ph"><span class="big">🖼️</span><span>Exterior painting</span></div>
+                <div class="ph"><span class="big">🖼️</span><span>Window cleaning</span></div>
+                <div class="ph"><span class="big">🖼️</span><span>Gutter clean-out</span></div>
+                <div class="ph"><span class="big">🖼️</span><span>Ceiling refinish</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="kicker">Why folks call back</div>
+            <h2>Local. Reliable. No runaround.</h2>
+            <div class="why-grid">
+                <div class="why">
+                    <h3>A real neighbor</h3>
+                    <p>Based right here in the community — the same neighborhoods you'll find me in on the weekend. Your recommendation is my whole business.</p>
+                </div>
+                <div class="why">
+                    <h3>Honest quotes</h3>
+                    <p>Free estimates with a real number, not a teaser rate. The price we agree on is the price you pay.</p>
+                </div>
+                <div class="why">
+                    <h3>Clean, careful work</h3>
+                    <p>Furniture covered, floors protected, plastic up where it matters — and everything hauled off and tidy before I call it done.</p>
+                </div>
+                <div class="why">
+                    <h3>One call does it</h3>
+                    <p>Painting, ceilings, windows, gutters — bundle jobs together and save yourself three different contractors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="wrap">
+            <div class="kicker">Get a free quote</div>
+            <h2>Ready when you are</h2>
+            <div class="contact-card">
+                <div>
+                    <div class="phone-big">(404) 914-25__</div>
+                    <p class="contact-note">Call or text — texts usually get the fastest reply. Tell me what you need done and I'll get you a quote, free.</p>
+                </div>
+                <a class="btn btn-primary" href="tel:+140491425__">📞 Call Daniel</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div>© <span id="yr">2026</span> Daniel Murphy Home Services · Cherokee County &amp; North Metro Atlanta</div>
+            <a class="genesis-ad" href="https://genesisehs.com" target="_blank" rel="noopener" aria-label="Powered by Genesis — premium home services, Metro Atlanta">
+                <img src="assets/genesis-mark.png" alt="Genesis" loading="lazy">
+                <span class="ga-text">
+                    <span class="ga-powered">Powered by</span>
+                    <span class="ga-name">Genesis</span>
+                    <span class="ga-tag">Premium home services · Metro Atlanta</span>
+                </span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
