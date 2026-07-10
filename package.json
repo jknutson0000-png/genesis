@@ -1,0 +1,10 @@
+{
+  "name": "genesis-site-preview",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local preview server for the Genesis Executive Home Services landing page.",
+  "scripts": {
+    "preview": "node server.js",
+    "test": "node --check server.js"
+  }
+}
