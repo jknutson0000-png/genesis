@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+    <h2>Import Contact List</h2>
+    <form class="grid" action="/upload" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="file">CSV or PDF file</label>
+            <input type="file" id="file" name="file" required />
+        </div>
+        <button type="submit">Upload & Clean</button>
+    </form>
+    <p class="helper">Accepted columns: Company Name, Counties Served, Contact Name, Title, Email, Phone, Source URL.</p>
+</section>
+
+<section class="card">
+    <h2>Contacts</h2>
+    <form class="filters" method="get" action="/">
+        <label>
+            Has email
+            <select name="has_email">
+                <option value="">All</option>
+                <option value="1">Has email</option>
+                <option value="0">Missing email</option>
+            </select>
+        </label>
+        <label>
+            County
+            <select name="county">
+                <option value="">All</option>
+                {% for county in county_options %}
+                <option value="{{ county }}">{{ county }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            Company search
+            <input type="text" name="company" placeholder="Search company" />
+        </label>
+        <label>
+            Status
+            <select name="status">
+                <option value="">All</option>
+                {% for status in status_values %}
+                <option value="{{ status }}">{{ status }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <button type="submit">Apply Filters</button>
+    </form>
+
+    <form action="/campaigns" method="post">
+        <div class="table-actions">
+            <div>
+                <label>Campaign name</label>
+                <input type="text" name="name" placeholder="Q4 outreach" required />
+            </div>
+            <div>
+                <label>Notes</label>
+                <input type="text" name="notes" placeholder="Filter: Cobb + Fulton" />
+            </div>
+            <button type="submit">Create Campaign</button>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Counties</th>
+                        <th>Status</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="contact_ids" value="{{ contact.id }}" />
+                        </td>
+                        <td>{{ contact.company_name }}</td>
+                        <td>{{ contact.contact_name }}<br /><span class="muted">{{ contact.title }}</span></td>
+                        <td>{{ contact.email or "—" }}</td>
+                        <td>{{ contact.counties_served }}</td>
+                        <td><span class="status {{ contact.status|lower|replace(' ', '-') }}">{{ contact.status }}</span></td>
+                        <td>{{ contact.phone }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="muted">No contacts imported yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Recent Campaigns</h2>
+    <ul class="list">
+        {% for campaign in campaigns %}
+        <li>
+            <a href="/campaigns/{{ campaign.id }}">{{ campaign.name }}</a>
+            <span class="muted">{{ campaign.created_at }}</span>
+        </li>
+        {% else %}
+        <li class="muted">No campaigns yet.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="card">
+    <h2>Template Builder</h2>
+    <form class="grid" action="/templates" method="post">
+        <label>
+            Template name
+            <input type="text" name="name" placeholder="Commercial Outreach" required />
+        </label>
+        <label>
+            Subject line
+            <input type="text" name="subject" required />
+        </label>
+        <label class="full">
+            Body
+            <textarea name="body" rows="6" required></textarea>
+        </label>
+        <button type="submit">Save Template Version</button>
+    </form>
+    <p class="helper">Available variables: {{"{{contact_name}}"}}, {{"{{company_name}}"}}, {{"{{counties_served}}"}}, {{"{{title}}"}}.</p>
+</section>
+{% endblock %}
